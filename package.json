@@ -1,0 +1,15 @@
+{
+  "name": "my_test_app",
+  "version": "1.0.9",
+  "description": "this is my app description!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=kapp* node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@kustomer/apps-server-sdk": "^0.0.5"
+  }
+}
