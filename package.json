@@ -1,6 +1,6 @@
 {
   "name": "my_test_app",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "this is my app description!",
   "main": "index.js",
   "scripts": {

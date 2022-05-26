@@ -34,7 +34,7 @@ const pkg = require('./package.json');
   app.on('customer', 'update', e => console.log(e));
 
   try {
-    await app.start(3000, false);
+    await app.start(process.env.PORT || 80, false);
   } catch (err) {
     app.log.error(JSON.stringify(err, undefined, 2));
   }
