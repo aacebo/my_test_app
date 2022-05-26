@@ -10,7 +10,7 @@ const pkg = require('./package.json');
     clientId: 'c2479683d727e9aab29981c41be5c891',
     clientSecret: '74b77494c879c5dd3c622fe502e178f4',
     roles: ['org.admin'],
-    url: 'https://98.116.161.71:3000',
+    url: 'https://my-test-app.onrender.com',
     env: 'qa',
     appDetails: {
       appDeveloper: {
@@ -30,6 +30,8 @@ const pkg = require('./package.json');
     system: false,
     default: false
   });
+
+  app.on('customer', 'update', e => console.log(e));
 
   try {
     await app.start(3000, false);
