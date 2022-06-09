@@ -1,6 +1,6 @@
 {
   "name": "delighted_sdk",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@kustomer/apps-server-sdk": "^0.0.7-rc.3"
+    "@kustomer/apps-server-sdk": "^0.0.7-rc.6"
   }
 }

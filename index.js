@@ -39,13 +39,32 @@ const pkg = require('./package.json');
     default: false
   });
 
-  app.onHook('nps', (orgId, data) => {
+  app.addKlass('net-promoter-score', {
+    icon: 'scoreboard',
+    color: '#FF0000',
+    metadata: {
+      properties: {
+        scoreNum: { displayName: 'Score' },
+        purchaseAmountNum: { displayName: 'Purchase Amount' },
+        commentTxt: { displayName: 'Comment' },
+        updatedAt: { displayName: 'Updated' }
+      }
+    }
+  });
+
+  app.onHook('nps', async (orgId, data) => {
     app.log.info(orgId);
     app.log.info(data);
+
+    const customer = await app.in('aacebo').getCustomerByEmail(data.event_data.person.email);
+    app.log.info(customer);
   });
 
   try {
-    await app.start(process.env.PORT || 80, process.env.NODE_ENV === 'local');
+    await app.start(
+      process.env.PORT || 80,
+      process.env.NODE_ENV === 'local'
+    );
   } catch (err) {
     app.log.error(JSON.stringify(err, undefined, 2));
   }
