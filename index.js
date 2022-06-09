@@ -15,7 +15,11 @@ const pkg = require('./package.json');
     `,
     clientId: '7b00e61887ea157d25512967d761a802',
     clientSecret: '7615e0cf6c0fd6df16f216057dc2bd56',
-    roles: ['org.admin'],
+    roles: [
+      'org.admin',
+      'org.user.customer.read',
+      'org.permission.customer.read'
+    ],
     url: 'https://my-test-app.onrender.com',
     env: 'qa',
     dependencies: ['kustomer-^1.8.16'],
@@ -56,7 +60,7 @@ const pkg = require('./package.json');
     app.log.info(orgId);
     app.log.info(data);
 
-    const customer = await app.in('aacebo').getCustomerByEmail(data.event_data.person.email);
+    const customer = await app.in(orgId).getCustomerByEmail(data.event_data.person.email);
     app.log.info(customer);
   });
 
@@ -65,6 +69,9 @@ const pkg = require('./package.json');
       process.env.PORT || 80,
       process.env.NODE_ENV === 'local'
     );
+
+    const token = await app.in('aacebo').getToken();
+    app.log.info(token);
   } catch (err) {
     app.log.error(JSON.stringify(err, undefined, 2));
   }
