@@ -20,7 +20,7 @@ const pkg = require('./package.json');
       'org.user.customer.read',
       'org.permission.customer.read'
     ],
-    url: 'https://my-test-app.onrender.com',
+    url: 'https://delighted.glitch.me',
     env: 'qa',
     dependencies: ['kustomer-^1.8.16'],
     screenshots: [],
@@ -57,8 +57,7 @@ const pkg = require('./package.json');
   });
 
   app.onHook('nps', async (orgId, data) => {
-    app.log.info(orgId);
-    app.log.info(data);
+    if (!data.event_data?.person?.email) return;
 
     const customer = await app.in(orgId).getCustomerByEmail(data.event_data.person.email);
     app.log.info(customer);
